@@ -10,26 +10,39 @@
       integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
       crossorigin="anonymous"
     />
-    <link ref="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/style.css" />
     <title>Check the Weather!</title>
   </head>
-  <body class="container">
-    <div class="row"><h1>Weather Dashboard</h1></div>
-    <!-- LEFT SIDE -->
-    <div class="col-4 searchContainer">
-      <input />
-      <button>
-        Search!
-      </button>
-      <hr />
-      <div>Searched Elements go here</div>
-    </div>
-    <!-- RIGHT SIDE -->
-    <div class="row resultsContainer">
-      <div class="col-8 today">Larger First box (todays Weather display)</div>
-      <div></div>
-    </div>
-
+  <body>
+    <h1 class="mainHeader">Weather Dashboard</h1>
+    <div name="searchBox" class="container">
+      <div class="row">
+        <div class="col-4 d-flex flex-column searchContainer">
+          <h2>Search for a City:</h2>
+          <input placeholder="Enter A City Here!"/>
+          <button>Search!</button>
+          <hr />
+          <div class="mb-3">Saved Queries go here</div>
+          <div class="mb-3">Saved Queries go here</div>
+          <div class="mb-3">Saved Queries go here</div>
+          <div class="mb-3">Saved Queries go here</div>
+          <div class="mb-3">Saved Queries go here</div>
+        </div>
+        <div class="today col-8">
+          Larger First box (Today's Weather display)
+        </div>
+      </div>
+      <div class="fiveDayHeading">
+        <h4>5-Day Forecast</h4>
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="col-2">2nd day</div>
+          <div class="col-2">3rd day</div>
+          <div class="col-2">4th day</div>
+          <div class="col-2">5th day</div>
+          <div class="col-2">6th day</div>
+        </div>
+        </div>
+      </div>
     <!--************* SCRIPTS********** -->
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -55,6 +68,4 @@ WHEN I view future weather conditions for that city
 THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
-
-
 -->
