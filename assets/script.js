@@ -105,12 +105,11 @@ goBtn.addEventListener("click", function getApi() {
 
 selectHistoryEl.addEventListener("click", function getApi() {
   // var userSearch = document.querySelector(".queryInput").value;
-  var pulledCity = JSON.parse(localStorage.getItem("storedCity"));
-  
-  console.log(pulledCity)
+  let pulledCity = JSON.parse(localStorage.getItem("storedCity")); // this should be storing the value (e.G. pulledCity = CityName)
+  console.log(pulledCity) // this is logging {userSearch: 'Juno'}
   var requestUrl =
     `https:api.openweathermap.org/data/2.5/forecast?units=imperial&appid=9ecdb8aa9746c79a02aea67b96d3c5a2&cnt=6&q=`+
-    pulledCity;
+    pulledCity.userSearch; //added userSearch to the end here and it will function *correctly*
     console.log(requestUrl)
   fetch(requestUrl)
     .then(function (response) {
