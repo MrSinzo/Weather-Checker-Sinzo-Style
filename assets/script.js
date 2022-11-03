@@ -1,6 +1,6 @@
 /*Needs to reach MVP
 1. need date to be in 5 day format, not 3 hour 
-2. need seached cities to have clickable button showing localStorage data
+2. DONE: need seached cities to have clickable button showing localStorage data
 3. need icons to get displayed
 4. need to show all searched cities ( maybe up to ten? and may need for-loop?)
 5. 
@@ -20,7 +20,8 @@ var forecastEl = document.querySelector("#forecastBox");
 var goBtn = document.querySelector(".searchBtn");
 var queryHistoryEl = document.querySelector(".searchHistory");
 var selectHistoryEl = document.querySelector(".openLastQuery");
-
+var today = moment()
+// $("#id or .class").text(today.format("MMM Do, YYYY"));
 goBtn.addEventListener("click", function getApi() {
   var userSearch = document.querySelector(".queryInput").value;
   var requestUrl =
@@ -47,7 +48,7 @@ goBtn.addEventListener("click", function getApi() {
       todayForecast.appendChild(todayName);
       //date
       var todayDate = document.createElement("h5");
-      todayDate.textContent = data.list[0].dt_txt;
+      todayDate.textContent = data.list[0].dt;
       todayForecast.appendChild(todayDate);
       //icon
       var todayIcon = document.createElement("li");
@@ -76,7 +77,7 @@ goBtn.addEventListener("click", function getApi() {
         forecastEl.appendChild(showData);
         //date
         var todayDate = document.createElement("h6");
-        todayDate.textContent = data.list[i].dt_txt;
+        todayDate.textContent = data.list[i].dt;
         showData.appendChild(todayDate);
         //icon
         var todayIcon = document.createElement("li");
