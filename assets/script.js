@@ -25,16 +25,17 @@ var today = moment()
 goBtn.addEventListener("click", function getApi() {
   var userSearch = document.querySelector(".queryInput").value;
   var requestUrl =
-    `https:api.openweathermap.org/data/2.5/forecast?units=imperial&appid=9ecdb8aa9746c79a02aea67b96d3c5a2&cnt=6&q=` +
+    `https:api.openweathermap.org/data/2.5/forecast?units=imperial&appid=9ecdb8aa9746c79a02aea67b96d3c5a2&cnt=32&q=` +
     userSearch;
   //main code to incorperate ^^^ // Main API code line works!!!!!
+  //Try to add an createElement for user input to display as History button?
   fetch(requestUrl)
     .then(function (response) {
       // console.log(response) // we are getting a response
       return response.json();
     })
     .then(function (data) {
-      // console.log(data); // we are getting Data
+      console.log(data); // we are getting Data
       // console.log(data.list[0].main.humidity + "%"); //sample pathway for aquiring specific data (humidity in this case)
       // console.log(data.list[0].wind.speed + " Mph");
       // console.log(data.list[0].main.temp + " Degrees");
@@ -48,7 +49,7 @@ goBtn.addEventListener("click", function getApi() {
       todayForecast.appendChild(todayName);
       //date
       var todayDate = document.createElement("h5");
-      todayDate.textContent = data.list[0].dt;
+      todayDate.textContent = data.list[0].dt_txt;
       todayForecast.appendChild(todayDate);
       //icon
       var todayIcon = document.createElement("li");
@@ -70,7 +71,8 @@ goBtn.addEventListener("click", function getApi() {
       todayWind.textContent = "Wind Speed: " + data.list[0].wind.speed + " Mph";
       todayForecast.appendChild(todayWind);
 
-      for (var i = 1; i < data.list.length; i++) {
+      // for (var i = 1; i < data.list.length; i++) -- original for loop set up  
+      for (var i = 1; i < data.list.length; i+8)  {
         var showData = document.createElement("ul");
         showData.classList.add("test");
         showData.setAttribute("style", "color:white;");
@@ -79,12 +81,13 @@ goBtn.addEventListener("click", function getApi() {
         var todayDate = document.createElement("h6");
         todayDate.textContent = data.list[i].dt;
         showData.appendChild(todayDate);
+        console.log(todayDate)
         //icon
         var todayIcon = document.createElement("li");
         todayIcon.textContent =
           data.list[i].weather.icon + " Icon should be here";
         showData.appendChild(todayIcon);
-        console.log(todayIcon.img); // console.logging nothing/ undefined
+        // console.log(todayIcon.img); // console.logging nothing/ undefined
         //humidity
         var humidityForecast = document.createElement("li");
         humidityForecast.textContent =
@@ -130,7 +133,7 @@ selectHistoryEl.addEventListener("click", function getApi() {
       todayDate.textContent = data.list[0].dt_txt;
       todayForecast.appendChild(todayDate);
       //icon 3. need icons to get displayed
-      var todayIcon = document.createElement("li");
+      var todayIcon = document.createElement("i");
       todayIcon.textContent =
         data.list[0].weather.icon + " :Icon should be here";
       todayForecast.appendChild(todayIcon);
@@ -180,6 +183,7 @@ selectHistoryEl.addEventListener("click", function getApi() {
           "Wind Speed: " + data.list[i].wind.speed + " MPH";
         showData.appendChild(windForecast);
       }
+      // icon.replace();
     });
 });
 
