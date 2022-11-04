@@ -31,11 +31,8 @@ goBtn.addEventListener("click", function getApi() {
     "https://api.openweathermap.org/data/2.5/weather?units=imperial&appid=9ecdb8aa9746c79a02aea67b96d3c5a2&q=" +
     userSearch;
   //main code to incorperate ^^^ // 5 Day API code line works!!!!!
-  //Try to add an createElement for user input to display as History button?
-
   fetch(requestUrl)
     .then(function (response) {
-      // console.log(response) // we are getting a response
       return response.json();
     })
     .then(function (data) {
@@ -51,18 +48,18 @@ goBtn.addEventListener("click", function getApi() {
       //date ********************************************************
       var todaySlot = document.createElement("h5");
       todaySlot.innerHTML = moment.unix(data.dt).format("MMM Do, YYYY"); // leave this alone // had to add.innerHTML to make this a "node"(?)
-      // console.log(
-      //   todaySlot.innerHTML +
-      //     " // I am showing the conversion of the Unix TimeStamp"
-      // ); // converting unix timestamp into readable date getting correct date to show in console.
       todayForecast.appendChild(todaySlot);
       //icon ********************************************************
-      var todayIcon = document.createElement("i"); // changed from "li" to "img" // changed from img to i
-      todayIcon.innerHTML = 'http://openweathermap.org/img/wn/'+data.weather[0].icon+'@2x.png';
-      console.log(data.weather[0].icon)
+      var todayIcon = document.createElement("img");
+      todayIcon.setAttribute(
+        "src",
+        "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png"
+      );
+      todayIcon.setAttribute("style", "scale:50%;");
+      console.log(data.weather[0].icon);
       // "http://openweathermap.org/img/wn/10d@2x.png" //example URL path from documentation
       todayForecast.appendChild(todayIcon);
-      console.log(todayIcon)
+      console.log(todayIcon.innerHTML);
       //humidity ********************************************************
       var todayHumidity = document.createElement("li");
       todayHumidity.textContent = "Humidity: " + data.main.humidity + "%";
@@ -103,10 +100,15 @@ goBtn.addEventListener("click", function getApi() {
         todayDate.textContent = data.list[i].dt_txt;
         showData.appendChild(todayDate);
         //icon********************************************************
-        var fiveDayIcon = document.createElement("i");
-        // fiveDayIcon.innerHTML ='http://openweathermap.org/img/wn/'+data.list[i].weather[i].icon+'@2x.png';
-        fiveDayIcon.innerHTML =
-          data.list[i].weather.icon + " Icon should be here";
+        var fiveDayIcon = document.createElement("img");
+        fiveDayIcon.setAttribute(
+          "src",
+          "http://openweathermap.org/img/wn/" +
+            data.list[i].weather[0].icon +
+            "@2x.png"
+        );
+        fiveDayIcon.setAttribute("style", "scale:50%;");
+        console.log(fiveDayIcon.innerHTML);
         showData.appendChild(fiveDayIcon);
         // console.log(fiveDayIcon.img); // console.logging nothing/ undefined
         //humidity********************************************************
@@ -157,10 +159,18 @@ selectHistoryEl.addEventListener("click", function getApi() {
       ); // converting unix timestamp into readable date getting correct date to show in console.
       todayForecast.appendChild(todaySlot);
       //icon ********************************************************
-      let todayIcon = document.createElement("li");
-      todayIcon.textContent = data.weather.icon + " :Icon should be here";
+      // let todayIcon = document.createElement("img");
+      // todayIcon.setAttribute("src", ) = data.weather.icon + " :Icon should be here";
+      // todayForecast.appendChild(todayIcon);
+      // console.log(todayIcon.textContent);
+      var todayIcon = document.createElement("img");
+      todayIcon.setAttribute(
+        "src",
+        "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png"
+      );
+      todayIcon.setAttribute("style", "scale:50%;");
       todayForecast.appendChild(todayIcon);
-      console.log(todayIcon.textContent);
+      console.log(data.weather[0].icon);
       //humidity ********************************************************
       let todayHumidity = document.createElement("li");
       todayHumidity.textContent = "Humidity: " + data.main.humidity + "%";
@@ -202,9 +212,15 @@ selectHistoryEl.addEventListener("click", function getApi() {
         todayDate.textContent = data.list[i].dt_txt;
         showData.appendChild(todayDate);
         //icon********************************************************
-        var fiveDayIcon = document.createElement("li");
-        fiveDayIcon.innerHTML =
-          data.list[i].weather.icon + " Icon should be here";
+        var fiveDayIcon = document.createElement("img");
+        fiveDayIcon.setAttribute(
+          "src",
+          "http://openweathermap.org/img/wn/" +
+            data.list[i].weather[0].icon +
+            "@2x.png"
+        );
+        fiveDayIcon.setAttribute("style", "scale:50%;");
+        console.log(fiveDayIcon.innerHTML);
         showData.appendChild(fiveDayIcon);
         // console.log(fiveDayIcon.img); // console.logging nothing/ undefined
         //humidity********************************************************
@@ -230,12 +246,12 @@ function showLastQuery() {
   if (pulledCity !== null) {
     document.querySelector(".searchHistory").innerHTML = pulledCity.userSearch;
   }
-  for (var i = 0; i < pulledCity.userSearch.length; i++) {
-    pulledCity.userSearch = document.createElement("button");
-    pulledCity.textContent = document.querySelector(".searchHistory").value;
-    pulledCity.textContent = JSON.parse(localStorage.getItem("storedCity"))
-    queryHistoryExtra.appendChild(pulledCity.userSearch);
-  }
+  // for (var i = 0; i < pulledCity.userSearch.length; i++) {
+    // pulledCity.userSearch = document.createElement("button");
+    // pulledCity.textContent = document.querySelector(".searchHistory").value;
+    // pulledCity.textContent = JSON.parse(localStorage.getItem("storedCity"));
+    // queryHistoryExtra.appendChild(pulledCity.userSearch);
+  // }
   // console.log(pulledCity.textContent)
 }
 function init() {
