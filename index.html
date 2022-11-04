@@ -20,21 +20,34 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" type="text/css" href="./assets/style.css" />
-    <title>Check the Weather!</title>
+    <title>Weather Dashboard!</title>
   </head>
   <body>
     <h1 class="mainHeader">Weather Dashboard</h1>
     <div name="searchBox" class="container">
       <div class="row">
         <div class="col-4 searchContainer">
-         <label><h2>Search for a City:</h2></label>
-          <p><textarea class="col-12 queryInput" placeholder="Enter A City Here!"></textarea></p>
+          <label><h2>Search for a City:</h2></label>
+          <p>
+            <textarea
+              class="col-12 queryInput"
+              placeholder="Enter A City Here!"
+            ></textarea>
+          </p>
           <button class="searchBtn">Check Weather Conditions!</button>
           <hr />
-          <button class="mb-3 searchHistory openLastQuery"></button>
+          <div>
+            <h6>Last Searched City</h6>
+            <div class="searchHistoryExtra">
+              <button
+                name="Searched Queries go here"
+                class="mb-3 searchHistory openLastQuery"
+              ></button>
+            </div>
+          </div>
         </div>
         <div class="col-8 todayForecast">
-          <h3>Today's Weather Forecast</h3>
+          <h3 id="todayTime">Today's Weather Forecast</h3>
           <div id="todayWeather"></div>
         </div>
       </div>
