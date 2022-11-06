@@ -53,7 +53,7 @@ goBtn.addEventListener("click", function getApi() {
       var todayIcon = document.createElement("img");
       todayIcon.setAttribute(
         "src",
-        "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png"
+        "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png"
       );
       todayIcon.setAttribute("style", "scale:50%;");
       console.log(data.weather[0].icon);
@@ -103,7 +103,7 @@ goBtn.addEventListener("click", function getApi() {
         var fiveDayIcon = document.createElement("img");
         fiveDayIcon.setAttribute(
           "src",
-          "http://openweathermap.org/img/wn/" +
+          "https://openweathermap.org/img/wn/" +
             data.list[i].weather[0].icon +
             "@2x.png"
         );
@@ -166,7 +166,7 @@ selectHistoryEl.addEventListener("click", function getApi() {
       var todayIcon = document.createElement("img");
       todayIcon.setAttribute(
         "src",
-        "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png"
+        "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png"
       );
       todayIcon.setAttribute("style", "scale:50%;");
       todayForecast.appendChild(todayIcon);
@@ -215,7 +215,7 @@ selectHistoryEl.addEventListener("click", function getApi() {
         var fiveDayIcon = document.createElement("img");
         fiveDayIcon.setAttribute(
           "src",
-          "http://openweathermap.org/img/wn/" +
+          "https://openweathermap.org/img/wn/" +
             data.list[i].weather[0].icon +
             "@2x.png"
         );
