@@ -59,7 +59,6 @@ goBtn.addEventListener("click", function getApi() {
       console.log(data.weather[0].icon);
       // "http://openweathermap.org/img/wn/10d@2x.png" //example URL path from documentation
       todayForecast.appendChild(todayIcon);
-      console.log(todayIcon.innerHTML);
       //humidity ********************************************************
       var todayHumidity = document.createElement("li");
       todayHumidity.textContent = "Humidity: " + data.main.humidity + "%";
@@ -108,7 +107,6 @@ goBtn.addEventListener("click", function getApi() {
             "@2x.png"
         );
         fiveDayIcon.setAttribute("style", "scale:50%;");
-        console.log(fiveDayIcon.innerHTML);
         showData.appendChild(fiveDayIcon);
         // console.log(fiveDayIcon.img); // console.logging nothing/ undefined
         //humidity********************************************************
