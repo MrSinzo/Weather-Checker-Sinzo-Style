@@ -32,6 +32,7 @@ goBtn.addEventListener("click", function getApi() {
     userSearch;
   //main code to incorperate ^^^ // 5 Day API code line works!!!!!
   fetch(requestUrl)
+  
     .then(function (response) {
       return response.json();
     })
@@ -55,8 +56,7 @@ goBtn.addEventListener("click", function getApi() {
         "src",
         "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png"
       );
-      todayIcon.setAttribute("style", "scale:50%;");
-      console.log(data.weather[0].icon);
+      todayIcon.setAttribute("style", "scale:75%;");
       // "http://openweathermap.org/img/wn/10d@2x.png" //example URL path from documentation
       todayForecast.appendChild(todayIcon);
       //humidity ********************************************************
@@ -74,10 +74,11 @@ goBtn.addEventListener("click", function getApi() {
     });
   ///********* 5 day Forecast *********\\\
 
-  var Url5day =
+  var url5Day =
     "https:api.openweathermap.org/data/2.5/forecast?units=imperial&appid=9ecdb8aa9746c79a02aea67b96d3c5a2&cnt=40&q=" +
     userSearch;
-  fetch(Url5day)
+    console.log(url5Day)
+  fetch(url5Day)
     .then(function (response) {
       // console.log(response) // we are getting a response
       return response.json();
@@ -106,7 +107,7 @@ goBtn.addEventListener("click", function getApi() {
             data.list[i].weather[0].icon +
             "@2x.png"
         );
-        fiveDayIcon.setAttribute("style", "scale:50%;");
+        fiveDayIcon.setAttribute("style", "scale:75%;");
         showData.appendChild(fiveDayIcon);
         // console.log(fiveDayIcon.img); // console.logging nothing/ undefined
         //humidity********************************************************
@@ -132,7 +133,7 @@ selectHistoryEl.addEventListener("click", function getApi() {
   var requestUrl =
     "https://api.openweathermap.org/data/2.5/weather?units=imperial&appid=9ecdb8aa9746c79a02aea67b96d3c5a2&q=" +
     pulledCity.userSearch; //added userSearch to the end here and it will function *correctly*
-  console.log(requestUrl);
+
   fetch(requestUrl)
     .then(function (response) {
       // console.log(response) // we are getting a response
@@ -151,24 +152,15 @@ selectHistoryEl.addEventListener("click", function getApi() {
       //date ********************************************************
       let todaySlot = document.createElement("h5");
       todaySlot.innerHTML = moment.unix(data.dt).format("MMM Do, YYYY"); // leave this alone // had to add.innerHTML to make this a "node"(?)
-      console.log(
-        todaySlot.innerHTML +
-          " // I am showing the conversion of the Unix TimeStamp"
-      ); // converting unix timestamp into readable date getting correct date to show in console.
       todayForecast.appendChild(todaySlot);
       //icon ********************************************************
-      // let todayIcon = document.createElement("img");
-      // todayIcon.setAttribute("src", ) = data.weather.icon + " :Icon should be here";
-      // todayForecast.appendChild(todayIcon);
-      // console.log(todayIcon.textContent);
       var todayIcon = document.createElement("img");
       todayIcon.setAttribute(
         "src",
         "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png"
       );
-      todayIcon.setAttribute("style", "scale:50%;");
+      todayIcon.setAttribute("style", "scale:75%;");
       todayForecast.appendChild(todayIcon);
-      console.log(data.weather[0].icon);
       //humidity ********************************************************
       let todayHumidity = document.createElement("li");
       todayHumidity.textContent = "Humidity: " + data.main.humidity + "%";
@@ -186,7 +178,7 @@ selectHistoryEl.addEventListener("click", function getApi() {
   ///********* 5 day Forecast *********\\\
 
   var Url5day =
-    "https:api.openweathermap.org/data/2.5/forecast?units=imperial&appid=9ecdb8aa9746c79a02aea67b96d3c5a2&cnt=40&q=" +
+    "https:api.openweathermap.org/data/2.5/forecast?units=imperial&appid=9ecdb8aa9746c79a02aea67b96d3c5a2&cnt=40&q="+
     pulledCity.userSearch;
   fetch(Url5day)
     .then(function (response) {
@@ -217,8 +209,7 @@ selectHistoryEl.addEventListener("click", function getApi() {
             data.list[i].weather[0].icon +
             "@2x.png"
         );
-        fiveDayIcon.setAttribute("style", "scale:50%;");
-        console.log(fiveDayIcon.innerHTML);
+        fiveDayIcon.setAttribute("style", "scale:75%;");
         showData.appendChild(fiveDayIcon);
         // console.log(fiveDayIcon.img); // console.logging nothing/ undefined
         //humidity********************************************************
