@@ -75,7 +75,7 @@ goBtn.addEventListener("click", function getApi() {
   ///********* 5 day Forecast *********\\\
 
   var url5Day =
-    "https:api.openweathermap.org/data/2.5/forecast?units=imperial&appid=9ecdb8aa9746c79a02aea67b96d3c5a2&cnt=40&q=" +
+    "https://api.openweathermap.org/data/2.5/forecast?units=imperial&appid=9ecdb8aa9746c79a02aea67b96d3c5a2&cnt=40&q=" +
     userSearch;
     console.log(url5Day)
   fetch(url5Day)
@@ -178,7 +178,7 @@ selectHistoryEl.addEventListener("click", function getApi() {
   ///********* 5 day Forecast *********\\\
 
   var Url5day =
-    "https:api.openweathermap.org/data/2.5/forecast?units=imperial&appid=9ecdb8aa9746c79a02aea67b96d3c5a2&cnt=40&q="+
+    "https://api.openweathermap.org/data/2.5/forecast?units=imperial&appid=9ecdb8aa9746c79a02aea67b96d3c5a2&cnt=40&q="+
     pulledCity.userSearch;
   fetch(Url5day)
     .then(function (response) {
