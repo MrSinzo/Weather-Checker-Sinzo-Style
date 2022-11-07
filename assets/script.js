@@ -3,7 +3,7 @@
 2. DONE: need seached cities to have clickable button using localStorage data
 3. need icons to get displayed
 4. Cannot complete : need to show all searched cities ( maybe up to ten? and may need for-loop?) 
-  4.a. Got user search to update DOM as soon as serach button is clicked, but i need a list of the last few cities searched
+  4.a. Got user search to update DOM as soon as serach button is clicked, but i would like a list of the last few cities searched
 */
 //Hooks
 var todayWeatherEl = document.getElementById("todayWeather");
@@ -190,7 +190,7 @@ selectHistoryEl.addEventListener("click", function getApi() {
       // console.log(data.list[0].main.humidity + "%");
       // console.log(data.list[0].wind.speed + " Mph");
       // console.log(data.list[0].main.temp);
-      for (var i = 0; i < data.list.length; i += 8) {
+      for (var i = 1; i < data.list.length; i += 8) {
         // console.log(i);
         // pre-setup ********************************************************
         var showData = document.createElement("ul");

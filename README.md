@@ -24,7 +24,7 @@ I wanted to help make travel plans a little simpler to create by allowing would-
 I needed to create and HTML page and Lots of JavaScript. It mainly uses appends and createElements to display the data to the user and a couple of Weather API's to gather relavant data. 
 
 To display the weather data for the current day, I used:
-https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 Which can be found here: https://openweathermap.org/current#one
 
 To display the forecast up to 5 days (Not including the Current Day), I used:
